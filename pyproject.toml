@@ -1,15 +1,24 @@
 [build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta:__legacy__"
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
 
-[tool.black]
+[project]
+name = "pdfhstack"
+version = "0.1.0"
+description = "Merge pages of pdf documents horizontally"
+authors = [{name = "Vladimir Abdrakhmanov", email = "vlabdrake@protonmail.com"}]
+readme = "readme.md"
+requires-python = ">=3.10"
+dependencies = ["pypdf"]
+
+[project.optional-dependencies]
+dev = ["ruff"]
+
+[project.scripts]
+pdfhstack = "pdfhstack:main"
+
+[tool.ruff]
 line-length = 120
 
-[tool.isort]
-profile = "black"
-
-[tool.pylint.master]
-jobs = 0
-
-[tool.pylint.format]
-max-line-length = 120
+[tool.ruff.lint]
+extend-select = ["I", "PL"]

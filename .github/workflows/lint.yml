@@ -16,12 +16,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install .[dev]
-      - name: Check style with black
+      - name: Check formatting with ruff
         run: |
-          black --check pdfhstack.py
-      - name: Check imports with isort
+          ruff format --check pdfhstack.py
+      - name: Lint with ruff
         run: |
-          isort --check pdfhstack.py
-      - name: Lint with pylint
-        run: |
-          pylint pdfhstack.py
+          ruff check pdfhstack.py
